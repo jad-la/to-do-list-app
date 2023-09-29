@@ -1,0 +1,102 @@
+.componenent-infoList{
+    width: 80%;
+    .blocInfo{
+        width: 50%;
+        margin: auto;
+        .infoListe{
+            margin-top: 50px;
+            h2{
+                margin: 20px auto;
+            }
+            .lesTaches{
+                margin: 20px
+            }
+            .tache{
+               
+                @include centerVertical;
+
+                h3{
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                }
+                
+            }
+            .liste-modeles{
+                @include centerVertical;
+            }
+        }
+        .infoListe-modif{
+            h1{
+                margin: 15px auto;
+            }
+            .titre-liste{
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-around;
+            }
+            span{
+                text-align: start
+            }
+            .liste-modeles{
+                @include centerVertical;
+                margin: 10px auto 35px;
+                .liste-modele{
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+            .item-taches{
+            
+                span{
+                    margin: 20px auto 10px;
+                }
+                .bloc-taches{
+                    @include centerVertical;
+                    margin-top: 15px;
+                    margin-bottom: 20px;
+                    .champ-tache{
+                        width: 70%;
+                        border: none;
+                        border-bottom: 1px solid $color1;
+                    }
+                    
+                }
+                label{
+                    width:25% ;
+                    input{
+                        margin-left: 5px;
+                    }
+                }
+                .bloc-btn-modif{
+                    @include centerVertical;
+                    .btn-modif{
+                        display: block;
+                        padding: 5px;
+                        border-radius: 10px;
+                        border: 1px solid $color1;
+                        background-color: transparent;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: $color1;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+        .btnDeletePut{
+            width: 80%;
+            margin: auto;
+            @include center;
+            gap: 15px;
+            button{
+                width: 30%;
+                padding: 5px;
+                border-radius: 10px;
+                background: transparent;
+
+            }
+        }
+    }
+   
+}

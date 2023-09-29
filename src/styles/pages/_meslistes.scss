@@ -1,0 +1,116 @@
+.page-liste{
+    width: 80%;
+    h1{
+        text-align: start;
+        margin: 20px;
+    }
+    .bloc-listes{
+        width: 100%;
+        padding: 20px;
+        flex-wrap: wrap;
+        @include centerVertical;
+        .box-info{
+            width: 250px;
+            height: 280px;
+            border-radius: 10px;
+            position: relative;
+            padding: 10px;
+           
+            h2{
+                margin: 10px auto 15px;
+                font-size: 20px;
+            }
+            ul{
+                height: 50%;
+                overflow: hidden;
+                
+                li{
+                    list-style-type: none;
+                    margin-bottom: 8px;
+                    @include centerVertical;
+                    div{
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        gap: 10px;
+                        
+                    }
+                }
+                
+            }
+            button{
+                width: 60%;
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 10px;
+                background: transparent;
+                padding: 8px;
+                a{
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+        .no-lists-message{
+            width: 50%;
+            margin: 30px auto;
+            text-align: center;
+            p{
+                margin-bottom: 20px;
+            }
+            a{
+                text-decoration: none;
+                padding: 5px 10px;
+                border-radius: 10px;
+                border: 1px solid $color1;
+                background-color: transparent;
+                color: $color1;
+                &:hover{
+                    background-color: $color1;
+                    color: white;
+                }
+            }
+        }
+    }
+    h2{
+        margin: 20px;
+        text-align: start;
+    }
+    .bloc-stats{
+        width: 100%;
+        .section-stats{
+            width: 80%;
+            margin: auto;
+            h3{
+                margin-top: 30px;
+                margin-bottom: 15px;
+                text-align: start;
+            }
+            .stat-global{
+                width: 280px !important;
+                height: 280px !important;
+                margin: 10px auto;
+            }
+            .bloc-stats-list{
+                margin-bottom: 10px;
+                @include centerVertical;
+                h4{
+                    margin: 10px auto;
+                    text-align: center;
+    
+                }
+                .stat-list{
+                    width: 160px !important;
+                    height: 160px !important;
+                }
+            }
+            .msg-creat-list{
+                margin: 100px 20px;
+                text-align: center;
+            }
+        }
+    }
+
+}

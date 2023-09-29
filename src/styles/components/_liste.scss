@@ -1,0 +1,85 @@
+.form-list{
+    width: 70%;
+    h1{
+        margin: 20px auto;
+    }
+    .bloc-form{
+        width: 70%;
+        margin: auto;
+        border: 1px solid $color1;
+        padding: 10px;
+        .input-name{
+            border-bottom: 2px solid $color1;
+        }
+        input{
+            display: block;
+            width:100% ;
+            height: 50px;
+            border: none;
+            background-color: transparent;
+           
+        }
+        .bloc-taches{
+            width: 100%;
+            .ajout-tache{
+                width: 100%;
+                border-bottom: 2px solid $color1;
+                @include centerVertical;
+            }
+          
+            .icon-delete{
+                width: 1.5em;
+                height: 1.5em;
+                margin-right: 10px;
+                fill: $color1;
+            }
+            .btn-ajout-tache{
+                width: 140px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            
+        }
+        .bloc-model-color{
+            width: 100%;
+            .circle-picker{
+                width: 60% !important;
+                margin:20px auto !important;
+                justify-content: space-around;
+                span{
+                    div{
+                        margin: auto !important;
+                        width: 42px !important;
+                        height: 42px !important;
+                    }
+                }
+            }
+            .liste-modeles{
+                @include centerVertical;
+                img.testIconeCheck{
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+        }
+    }
+    button{
+        display: block;
+           
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid $color1;
+            background-color: transparent;
+            cursor: pointer;
+            &:hover{
+                background-color: $color1;
+                color: white;
+            }
+    }
+    .btn-submit{
+           display: block;  
+           width: 200px;   
+           margin: 20px auto;
+                
+    }
+}

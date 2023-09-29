@@ -1,0 +1,30 @@
+.liste-modele{
+    width: 180px;
+    height: 130px;
+    border: none;
+    background-color: $color1;
+    border-radius: 5px;
+    h2{
+        margin-top: 5px;
+        font-size: 14px;
+    }
+    ul{
+        padding: 10px;
+        li{
+            list-style-type: none;
+            @include centerVertical;
+            img{
+                width: 8px;
+                height: 8px;
+                object-fit: cover;
+                margin-right: 5px;
+            }
+            span{
+                font-size: 11px;
+            }
+            .testIconeCheck{
+                font-size: 20px;
+            }
+        }
+    }
+}

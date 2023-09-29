@@ -1,0 +1,43 @@
+form{
+    width: 100%;
+    margin: auto;
+    .input-focus{
+        display: block;
+        width:100% ;
+        height: 50px;
+        margin-top: 10px;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid $color1;
+    }
+    .input-focus:-webkit-autofill,
+    .input-focus:-webkit-autofill:hover, 
+    .input-focus:-webkit-autofill:focus, 
+    .input-focus:-webkit-autofill:active{
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: #000000;
+        transition: background-color 5000s ease-in-out 0s;
+        box-shadow: inset 0 0 20px 20px #23232300;
+    }
+    .userAdd{
+        display: block;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin: 40px auto 20px;
+    }
+    .btn-sub{
+        display: block;
+        margin: 30px auto;
+        width: 45%;
+        padding: 8px;
+        border-radius: 10px;
+        border: 1px solid $color1;
+        background-color: transparent;
+        cursor: pointer;
+        &:hover{
+            background-color: $color1;
+            color: white;
+        }
+    }
+}

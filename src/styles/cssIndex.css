@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.accueil-page {
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+  background-color: #E9E9E9;
+}
+.accueil-page .intro-signup-login {
+  height: 100vh;
+  width: 100%;
+}
+.accueil-page .intro-signup-login .signup-login-section {
+  height: 70%;
+  width: 40%;
+  margin: 40px auto 20px;
+  border: 1px solid blue;
+}
+.accueil-page .intro-signup-login .signup-login-section .btns-signup-login {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+.accueil-page .intro-signup-login .signup-login-section .btns-signup-login span {
+  display: block;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+form {
+  width: 80%;
+  margin: auto;
+}
+form input {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+}/*# sourceMappingURL=cssIndex.css.map */
