@@ -40,4 +40,13 @@ form{
             color: white;
         }
     }
+    .lien-password{
+        display: block;
+        width: 128px;
+        margin: auto;
+        text-decoration: none;
+        color: $color1;
+        font-family: 'Vollkorn', serif;
+        font-size: 14px;
+    }
 }

@@ -1,7 +1,7 @@
 nav{
     width: 100%;
     height: 100px;
-    padding-left:25px;
+    padding:10px 25px;
     @include centerVertical;
     img{
         width: 80px;
@@ -9,9 +9,9 @@ nav{
         object-fit: cover;
     }
     .btnLogin{
+        display: block;
         width: 200px;
         padding: 15px;
-        margin-right: 50px;
         background-color: $color1;
         border: none;
         color: white;
@@ -19,6 +19,22 @@ nav{
         a{
             text-decoration: none;
             color: white ;
+        }
+    }
+    @media (max-width: 600px) {
+        padding:10px 14px;
+        .btnLogin{
+            width: 160px;
+        }
+    }
+    @media (max-width: 375px) {
+        img{
+            width: 60px;
+            height: 60px;
+        }
+        .btnLogin{
+            width: 120px;
+            padding: 12px;
         }
     }
 }

@@ -1,7 +1,7 @@
 .componenent-infoList{
     width: 80%;
     .blocInfo{
-        width: 50%;
+        width: 570px;
         margin: auto;
         .infoListe{
             margin-top: 50px;
@@ -9,17 +9,17 @@
                 margin: 20px auto;
             }
             .lesTaches{
-                margin: 20px
-            }
-            .tache{
-               
-                @include centerVertical;
-
-                h3{
-                    margin-bottom: 10px;
-                    font-size: 18px;
+                margin: 20px;
+                .tache{
+                   
+                    @include centerVertical;
+    
+                    h3{
+                        margin-bottom: 10px;
+                        font-size: 18px;
+                    }
+                    
                 }
-                
             }
             .liste-modeles{
                 @include centerVertical;
@@ -29,46 +29,77 @@
             h1{
                 margin: 15px auto;
             }
-            .titre-liste{
-                margin-bottom: 20px;
-                display: flex;
-                justify-content: space-around;
-            }
-            span{
-                text-align: start
-            }
-            .liste-modeles{
-                @include centerVertical;
-                margin: 10px auto 35px;
-                .liste-modele{
-                    width: 100px;
-                    height: 100px;
-                }
-            }
-            .item-taches{
-            
-                span{
-                    margin: 20px auto 10px;
-                }
-                .bloc-taches{
-                    @include centerVertical;
-                    margin-top: 15px;
+            .form-modif{
+                border: 1px solid $color1;
+                padding: 20px 10px;
+                .titre-liste{
                     margin-bottom: 20px;
-                    .champ-tache{
-                        width: 70%;
+                    display: flex;
+                    justify-content: flex-start;
+                    input{
+                        width: 75%;
                         border: none;
                         border-bottom: 1px solid $color1;
+                        margin-left: 10px;
                     }
-                    
                 }
-                label{
-                    width:25% ;
-                    input{
-                        margin-left: 5px;
+                span{
+                    text-align: start;
+                }
+                .color-bloc{
+                    margin-top: 10px;
+                    margin-bottom: 15px;
+                    .circle-picker{
+                        width: 80% !important;
+                        margin:20px auto !important;
+                        justify-content: space-between;
+                        span{
+                            div{
+                                margin: auto !important;
+                                width: 42px !important;
+                                height: 42px !important;
+                            }
+                        }
                     }
+                }
+                .liste-modeles{
+                    @include centerVertical;
+                    margin: 10px auto 35px;
+                    .liste-modele{
+                        width: 150px;
+                        height: 120px;
+                        img.testIconeCheck{
+                            width: 10px;
+                            height: 10px;
+                        }
+                    }
+                }
+                .item-taches{
+                
+                    span{
+                        margin: 20px auto 10px;
+                    }
+                    .bloc-taches{
+                        @include centerVertical;
+                        margin-top: 15px;
+                        margin-bottom: 20px;
+                        .champ-tache{
+                            width: 90%;
+                            border: none;
+                            border-bottom: 1px solid $color1;
+                            font-size: 14px;
+                            color: rgb(58, 57, 57);
+                        }
+                        
+                    }
+                        input{
+                            margin-left: 5px;
+                        }
                 }
                 .bloc-btn-modif{
                     @include centerVertical;
+                    width: 80%;
+                    margin: auto;
                     .btn-modif{
                         display: block;
                         padding: 5px;
@@ -89,12 +120,106 @@
             margin: auto;
             @include center;
             gap: 15px;
+            a{
+                text-decoration: none;
+                color: black;
+            }
             button{
                 width: 30%;
                 padding: 5px;
                 border-radius: 10px;
                 background: transparent;
-
+                cursor: pointer;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+        .blocInfo{
+            width: 450px;
+            .infoListe-modif{
+                width: 100%;
+                .form-modif{
+                    .titre-liste{
+                        input{
+                            width: 65%;
+                            margin-left: 5px;
+                        }
+                    }
+                    .liste-modeles{
+                        .liste-modele{
+                            width: 125px;
+                            height: 115px;
+                            img.testIconeCheck{
+                                width: 10px;
+                                height: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 470px) {
+        
+        .blocInfo{
+            width: 95%;
+            text-align: start;
+            .infoListe{
+                .lesTaches{
+                    margin: 20px 10px;
+                    .tache{
+                        h3{
+                            text-align: start;
+                            font-size: 14px;
+                        }    
+                    }
+                }   
+                .btnDeletePut{
+                    width: 95%;
+                    button{
+                        width: 33%;
+                    }
+                }
+            }
+           
+        }
+    }
+    @media (max-width: 450px) {
+        
+        .blocInfo{           
+            .infoListe-modif{               
+                .form-modif{
+                    padding: 20px 6px;
+                    .titre-liste{
+                        input{
+                            width: 60%;
+                        }
+                    }
+                    .color-bloc{
+                        .circle-picker{
+                            width: 100% !important;
+                            span{
+                                div{
+                                   
+                                    width: 35px !important;
+                                    height: 35px !important;
+                                }
+                            }
+                        }
+                    }
+                    .liste-modeles{
+                        flex-direction: column;
+                        .liste-modele{
+                            width: 50%;
+                            height: 150px;
+                            margin-bottom: 10px;
+                        }
+                    } 
+                    .bloc-btn-modif{
+                        width: 100%;
+                    }                   
+                }
             }
         }
     }

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link} from 'react-router-dom';
 import Stats from './Stats'
 import 'chart.js/auto';
-
+import {motion} from 'framer-motion';
 
 
 
@@ -69,7 +69,12 @@ const MesListes = () => {
                             </li>
                         
                       ))}</ul>
-                      <button style={{ fontFamily: donnee.model.span }} ><Link to={`/Dashboard/${donnee._id}`}>Plus de details</Link></button>
+                      <motion.button 
+                        whileHover={{scale: 1.05}}
+                        style={{ fontFamily: donnee.model.span }} 
+                      >
+                        <Link to={`/Dashboard/${donnee._id}`}>Plus de details</Link>
+                      </motion.button>
                   </div>
               ))
           )}

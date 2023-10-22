@@ -2,10 +2,11 @@ import React from 'react';
 import LosangeIcon from '../assets/losange-icon.ico';
 import CheckSquare from '../assets/check_square.ico';
 import Square from '../assets/square.ico';
+import {motion} from 'framer-motion';
 
 
 
-const ListeModel3 = ({ onSelect, backgroundColor }) => {
+const ListeModel3 = ({ onSelect, backgroundColor, isSelected}) => {
   const modelStyles = {
     h2: 'Lora',
     span: 'Vollkorn',
@@ -13,11 +14,16 @@ const ListeModel3 = ({ onSelect, backgroundColor }) => {
     iconcheck:  CheckSquare ,
     icon:Square, 
   };
+  const borderStyle = {
+    backgroundColor: backgroundColor,
+    border: isSelected? '1px solid  rgb(104 102 102)' : 'none',
+  };
   return (
-    <div
+    <motion.div
+      whileHover={{scale: 1.05}}
       className="liste-modele"
-      style={{ backgroundColor: backgroundColor }}
-      onClick={() => onSelect(backgroundColor, modelStyles)}
+      style={borderStyle}
+      onClick={() => onSelect(backgroundColor, modelStyles, 'model3')}
     >
       <h2 style={{ fontFamily: 'Lora' }}>Model 3</h2>
           <ul>
@@ -43,7 +49,7 @@ const ListeModel3 = ({ onSelect, backgroundColor }) => {
                 <img  src={ Square} alt="Icône étoile"   className='testIconeCheck'/>
             </li>
           </ul>
-    </div>
+    </motion.div>
   );
 };
 

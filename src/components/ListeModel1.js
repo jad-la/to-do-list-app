@@ -2,9 +2,10 @@ import React from 'react';
 import CircleIcon from '../assets/perfect-circle.ico';
 import SquareCheck from '../assets/squareCheck.ico';
 import Square from '../assets/square.ico';
+import {motion} from 'framer-motion';
 
 
-const ListeModel1 = ({ onSelect, backgroundColor }) => {
+const ListeModel1 = ({ onSelect, backgroundColor, isSelected }) => {
   const modelStyles = {
     h2: 'Courgette',
     span: 'Caveat',
@@ -12,11 +13,16 @@ const ListeModel1 = ({ onSelect, backgroundColor }) => {
     iconcheck:  SquareCheck ,
     icon:Square, 
   };
+  const borderStyle = {
+    backgroundColor: backgroundColor,
+    border: isSelected ? '1px solid rgb(104 102 102)' : 'none',
+  };
   return (
-    <div
+    <motion.div
+      whileHover={{scale: 1.05}}
       className="liste-modele"
-      style={{ backgroundColor: backgroundColor }}
-      onClick={() => onSelect(backgroundColor, modelStyles)}
+      style={borderStyle}
+      onClick={() => onSelect(backgroundColor, modelStyles, 'model1')}
     >
       <h2 style={{ fontFamily: 'Courgette' }}>Model 1</h2>
           <ul>
@@ -45,7 +51,7 @@ const ListeModel1 = ({ onSelect, backgroundColor }) => {
                 {/* <FaRegSquareCheck className='testIconeCheck'/>  */}
             </li>
           </ul>
-    </div>
+    </motion.div>
   );
 };
 

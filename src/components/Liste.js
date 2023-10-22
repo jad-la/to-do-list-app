@@ -12,28 +12,44 @@ const Liste = () => {
   const [backgroundColor, setBackgroundColor] = useState('');
   const [selectedModel, setSelectedModel] = useState(null); // Couleur de fond par défaut
 
-  // const handleColorChange = (color) => {
-  //   setBackgroundColor(color.hex);
-  // };
+  const [selectedModelStyle, setSelectedModelStyle] = useState({}); // activé ou désactivé bordure
+  const [model1Clicked, setModel1Clicked] = useState(false);
+  const [model2Clicked, setModel2Clicked] = useState(false);
+  const [model3Clicked, setModel3Clicked] = useState(false);
+ 
 
-  const predefinedColors = ['#F2C6DE', '#C6DEF1', '#C9E4DE']; 
-    const {
+  const predefinedColors = ['#F2C6DE', '#C6DEF1', '#C9E4DE', '#F9C6C9', '#FAEDCB', '#DBCDF0']; 
+      const {
         register,
         handleSubmit,
         formState: { errors },
         control,
       } = useForm();
-      // const [selectedColor, setSelectedColor] = useState(null);
-     
-    
+  
       const { fields, append, remove } = useFieldArray({
         control,
         name: 'tasks', // Nom du champ de tâches dans le formulaire
       });
     
-      const handleTemplateSelection = (color, modelStyles) => {
+      const handleTemplateSelection = (color, modelStyles, modelName) => {
         setSelectedModel(modelStyles);
         setBackgroundColor(color);
+        setSelectedModelStyle(modelName)
+
+        // Désactivez les autres modèles
+        if (modelName === 'model1') {
+          setModel1Clicked(true);
+          setModel2Clicked(false);
+          setModel3Clicked(false);
+        } else if (modelName === 'model2') {
+          setModel1Clicked(false);
+          setModel2Clicked(true);
+          setModel3Clicked(false);
+        } else if (modelName === 'model3') {
+          setModel1Clicked(false);
+          setModel2Clicked(false);
+          setModel3Clicked(true);
+        }
       };
      
 
@@ -96,21 +112,33 @@ const Liste = () => {
                 </div>
                 <div className='bloc-model-color'>
                     
-                    <label>Choisissez un modèle :</label>
-                    <div className="liste-modeles">
-                      <ListeModel1  backgroundColor= {backgroundColor} onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles)} />
-                      <ListeModel2  backgroundColor= {backgroundColor} onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles)} />
-                      <ListeModel3  backgroundColor= {backgroundColor} onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles)} />
-                    </div>
-
-                    <span>Choisissez une couleur</span>
+                    <span>Choisissez une couleur:</span>
                     <CirclePicker
                       className='item-color'
                       color={backgroundColor}
-                     
                       onChangeComplete={(color) => handleTemplateSelection(color.hex, selectedModel )}
                       colors={predefinedColors}
                     />
+                    
+                    <label>Choisissez un modèle :</label>
+                    <div className="liste-modeles">
+                      <ListeModel1  
+                        backgroundColor= {backgroundColor} 
+                        onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model1')} 
+                        isSelected={selectedModelStyle === 'model1'}
+                      />
+                      <ListeModel2  
+                        backgroundColor= {backgroundColor}
+                        onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model2')} 
+                        isSelected={selectedModelStyle === 'model2'}
+                      />
+                      <ListeModel3  
+                        backgroundColor= {backgroundColor} 
+                        onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model3')} 
+                        isSelected={selectedModelStyle === 'model3'}
+                      />
+                    </div>
+
                 </div>
             </div>
 

@@ -19,6 +19,10 @@
             background-color: transparent;
            
         }
+        .input-name-tache{
+            font-size: 14px;
+            color: rgb(58, 57, 57);
+        }
         .bloc-taches{
             width: 100%;
             .ajout-tache{
@@ -43,9 +47,9 @@
         .bloc-model-color{
             width: 100%;
             .circle-picker{
-                width: 60% !important;
+                width: 80% !important;
                 margin:20px auto !important;
-                justify-content: space-around;
+                justify-content: space-between;
                 span{
                     div{
                         margin: auto !important;
@@ -56,6 +60,8 @@
             }
             .liste-modeles{
                 @include centerVertical;
+                margin-top: 5px;
+                margin-bottom: 15px;
                 img.testIconeCheck{
                     width: 10px;
                     height: 10px;
@@ -81,5 +87,44 @@
            width: 200px;   
            margin: 20px auto;
                 
+    }
+    @media (max-width: 1180px) {
+        .bloc-form{
+            width: 90%;
+        }
+    }
+    @media (max-width: 930px) {
+        .bloc-form{
+            width: 90%;
+        }
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+       
+    }
+    @media (max-width: 580px) {
+        .bloc-form{
+            .liste-modeles{
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+       
+    }
+    @media (max-width: 425px) {
+        .bloc-form{
+            .bloc-model-color{
+                .circle-picker{
+                    width: 100% !important;
+                    span{
+                        div{
+                            width: 38px !important;
+                            height: 38px !important;
+                        }
+                    }
+                }
+            }
+        }
+       
     }
 }

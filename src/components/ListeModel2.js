@@ -2,10 +2,11 @@ import React from 'react';
 import FlecheIcon from '../assets/fleche-icons.ico';
 import Circle from '../assets/circle.ico';
 import CheckCircle from '../assets/checkCircle.ico';
+import {motion} from 'framer-motion';
 
 
 
-const ListeModel2 = ({ onSelect, backgroundColor }) => {
+const ListeModel2 = ({ onSelect, backgroundColor, isSelected}) => {
     const modelStyles = {
         h2: 'Raleway',
         span: 'Quicksand',
@@ -13,13 +14,17 @@ const ListeModel2 = ({ onSelect, backgroundColor }) => {
         iconcheck:  CheckCircle ,
         icon:Circle, 
       };
-  
+      const borderStyle = {
+        backgroundColor: backgroundColor,
+        border: isSelected? '1px solid  rgb(104 102 102)' : 'none',
+      };
 
   return (
-      <div
+      <motion.div
+        whileHover={{scale: 1.05}}
         className="liste-modele"
-        style={{ backgroundColor: backgroundColor }}
-        onClick={() => onSelect(backgroundColor, modelStyles)}
+        style={borderStyle}
+        onClick={() => onSelect(backgroundColor, modelStyles, 'model2')}
       >
           <h2 style={{ fontFamily: 'Raleway' }}>Model 2</h2>
           <ul>
@@ -46,7 +51,7 @@ const ListeModel2 = ({ onSelect, backgroundColor }) => {
                 <img  src={ Circle} alt="Icône étoile" width={10} height={10}  className='testIconeCheck'/>
             </li>
           </ul>
-      </div>
+      </motion.div>
   );
 };
 

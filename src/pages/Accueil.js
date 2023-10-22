@@ -7,12 +7,24 @@ import Header from '../components/Header';
 
 
 const Accueil = ({ setIsAdminLoggedIn }) => {
-    const [showAdditionalField, setShowAdditionalField] = useState(false);
+    const [showAdditionalField, setShowAdditionalField] = useState(true);
+    const [reinitPassWord, setReinitPassWord]= useState(false)
     const [firstFormStyle, setFirstFormStyle] = useState({});
     const [secondFormStyle, setSecondFormStyle] = useState({});
-    const [btnToggle, setBtnToggle] = useState({});
+    const [btnToggle, setBtnToggle] = useState(() => {
+        if (window.innerWidth <= 601) {
+          return { left: '8px' };
+        } else if (window.innerWidth <= 650) {
+          return { left: '15px' };
+        } else if (window.innerWidth <= 826) {
+          return { left: '20px' };
+        } else {
+          return { left: '0' };
+        }
+      });
     const [profilePicture, setProfilePicture] = useState(null);
-
+    const [activeButton, setActiveButton] = useState('');
+    
     const handleLoginButtonClick = () => {
         setFirstFormStyle({ 
             left: '-100%',
@@ -21,8 +33,17 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
         setSecondFormStyle({   
             left:' 50%',
             transform: 'translateX(-50%)' });
-        setBtnToggle({   
-            left:' 180px'})
+        if (window.innerWidth <= 601) {
+            setBtnToggle({left: '208px'});
+        }else if (window.innerWidth <= 650) {
+            setBtnToggle({left: '228px'});
+        }else if (window.innerWidth <= 826) {
+            setBtnToggle({left: '258px'});
+        }else {
+            setBtnToggle({ left:' 180px'})}; 
+        setReinitPassWord(true);
+        setActiveButton('login');
+        setShowAdditionalField(false);
     };
     const handleSignupButtonClick = () => {
         setFirstFormStyle({ 
@@ -30,8 +51,15 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
             transform: 'translateX(-50%)' 
         });
         setSecondFormStyle({ left:' 100%'});
-        setBtnToggle({ left: '0'});
+        if (window.innerWidth <= 601) {
+            setBtnToggle({left: '8px'});
+        }else if (window.innerWidth <= 650) {
+            setBtnToggle({left: '15px'});
+        } else if (window.innerWidth <= 826) {
+            setBtnToggle({left: '20px'});
+        } else {setBtnToggle({ left: '0'})};
         setShowAdditionalField(true);
+        setActiveButton('signup');
     };
     const handleSignupFormSubmit = (data) => {
         console.log(data);
@@ -45,13 +73,7 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
         }
         console.log(formData);
         console.log(profilePicture);
-        axios.post('http://localhost:4000/api/user/signup', formData
-        // , {
-        //     headers: {
-        //       'Content-Type': 'multipart/form-data', // Assurez-vous que le backend peut gérer les données multipart/form-data
-        //     },
-        //   }
-          )
+        axios.post('http://localhost:4000/api/user/signup', formData)
             .then((response) => {
             console.log('Utilisateur enregistré', response.data);
            
@@ -90,27 +112,23 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
                 <p>Dites adieu aux oublis frustrants et aux journées désorganisées. Notre application vous accompagne avec des fonctionnalités simples mais puissantes, vous permettant de créer vos listes, de suivre vos tâches et de prioriser vos objectifs. Relevez le défi de la productivité avec notre application de liste de tâches, et découvrez comment une petite organisation peut faire une grande différence dans votre vie quotidienne.</p>
 
                 <div id="signup-login" className='signup-login-section'>
-                
-                        {/* <img className='svgWavy' src='/images/Vector1.svg' alt='fond wavy svg'/> */}
-
-                    <div className='btns-signup-login'>
-                        
+                    <div className='btns-signup-login'>                       
                         <div className='btn-bgd'style={btnToggle}></div>
-                        <button className='btnSignup' onClick={handleSignupButtonClick}>Inscription</button>
-                        <button className='btnLogin'onClick={handleLoginButtonClick}>Connexion</button>
+                        <button className={`btnSignup ${activeButton === 'signup' ? 'button-active' : ''}`} onClick={handleSignupButtonClick}>Inscription</button>
+                        <button className={`btnLogin ${activeButton === 'login' ? 'button-active' : ''}`}onClick={handleLoginButtonClick}>Connexion</button>
                     </div>
                     <div className='form-box form-signup' style={firstFormStyle}>
                         <Formulaire showAdditionalField={showAdditionalField} onSubmitApi={handleSignupFormSubmit}/>
                     </div>
                     <div className='form-box form-login' style={secondFormStyle}>
-                        <Formulaire onSubmitApi={handleLoginFormSubmit}/>
+                        <Formulaire reinitPassWord={reinitPassWord} onSubmitApi={handleLoginFormSubmit}/>
                     </div>
                 </div>
 
             </section>
           
-                <section className='info'>
-                    <Wave className='separateur' fill='#FEBB9E'
+            <section className='info'>
+                <Wave className='separateur' fill='#FEBB9E'
                         paused={false}
                         style={{ display: 'flex' }}
                         options={{
@@ -119,8 +137,8 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
                             speed: 0.15,
                             points: 3
                         }}
-                    />
-                    <div className='partie-info'>
+                />
+                <div className='partie-info'>
                         <div className='bloc-contenu'>
                             <h3>Organisation</h3>
                             <img src='/images/accueil/3877111.jpg' alt='organisation' />
@@ -137,8 +155,8 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
                             <h3>Compte</h3>
                             <img src='/images/accueil/dashboard-analyser-donnees.jpg' alt='organisation' />
                         </div>
-                    </div>
-                </section>
+                </div>
+            </section>
 
         </div>
     );

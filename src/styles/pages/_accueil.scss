@@ -78,7 +78,7 @@
                 transition: .5s;
             }
             .form-signup{
-                left: 50%;
+                left: 50% ;
                 transform: translateX(-50%);
             }
             .form-login {
@@ -119,5 +119,94 @@
                 }
             }
         }
+    }
+    @media (max-width: 1024px) {
+        .info{
+            .partie-info{
+                .bloc-contenu{
+                    width: 23%;
+                }
+            }
+        }
+    }
+    @media (max-width: 825px) {
+        .intro-signup-login{
+            .signup-login-section{
+                width: 581px;
+            }
+        }
+        .info{
+            .partie-info{
+                flex-wrap: wrap;
+                .bloc-contenu{
+                    width:45%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+    @media (max-width: 650px) {
+        .intro-signup-login{
+            .signup-login-section{
+                width: 530px;
+            }
+        }   
+       
+    }
+    @media (max-width: 600px) {
+        .intro-signup-login{
+            width: 95%;
+            .signup-login-section{
+                width: 498px; 
+            }
+        }
+        .info{
+            width: 95%;
+        }
+       
+    }
+    @media (max-width: 540px) {
+        .intro-signup-login{
+           
+            .signup-login-section{
+                width: 95%;
+                .btns-signup-login{
+                    .btn-bgd{
+                        display: none;
+                    }
+                    .button-active {
+                        background:$color1; 
+                        color: white;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+        
+       
+    }
+    @media (max-width: 425px) {
+        .intro-signup-login{  
+            .signup-login-section{ 
+                width: 100%;
+                &::before{
+                    top: -25px;
+                    transform: rotate(328deg);
+                }
+                .btns-signup-login{
+                    width: 100%;
+                }
+            }        
+        }
+        .info{
+            .partie-info{
+                flex-direction: column;
+                .bloc-contenu{
+                    width:70%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+       
     }
 }

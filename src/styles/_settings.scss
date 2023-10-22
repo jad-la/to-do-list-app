@@ -43,12 +43,24 @@ h1{
     font-weight: 600;
     font-size: 38px;
     text-align: center;
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
+    @media (max-width:425px) {
+        font-size: 28px;
+    }
 }
 h2{
     font-family: 'Lora', serif;
     font-size: 30px;
     font-weight: 600;
     text-align: center;
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
+    @media (max-width:425px) {
+        font-size: 24px;
+    }
 }
 
 
@@ -62,13 +74,23 @@ h3{
 p, li{
     font-family: 'Vollkorn', serif;
     font-size: 16px;
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+    
 }
 button{
     font-family: 'Vollkorn', serif;
     font-size: 16px;
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 input,
 input::placeholder{
     font-family: 'Vollkorn', serif;
     font-size: 16px;
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 }

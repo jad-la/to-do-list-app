@@ -1,0 +1,93 @@
+.compte-utilisateur{
+    width: 80%;
+    padding: 20px;
+    button{
+        display: block;  
+        margin: auto;  
+        width: 300px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: 1px solid $color1;
+        background-color: transparent;
+        cursor: pointer;
+        &:hover{
+            background-color: $color1;
+            color: white;
+        }
+    }
+    .compte{
+        margin-top: 20px;
+        h1{
+            margin-bottom: 20px;
+        }
+        .infoUser{
+            
+            img{
+                width: 300px;
+                height: 200px;
+                object-fit: cover;
+                margin-bottom: 10px;
+            }
+            p{
+                margin-bottom: 8px;
+                span{
+                    margin-right: 5px;
+                }
+            }
+            .btn-modif{
+                margin-left: 0;
+            }
+          
+        }
+    }
+    .form-user-update{
+        width: 100%;
+        .infoUser{
+            margin: 20px auto;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+
+            input{
+                width: 300px;
+                margin:  10px auto;
+                border: none;
+                border-bottom: 1px solid $color1;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        margin: auto;
+        .compte{
+            .infoUser{
+                img{
+                    margin: 0 auto 10px;
+                    display: block;
+                }
+                text-align: center;
+                .btn-modif{
+                   display: block;
+                   margin: auto;
+                }
+            }
+        }
+    }
+    @media (max-width: 670px) {
+        .form-user-update{
+            width: 100%;
+            .infoUser{ 
+                width: 80%;
+                input{
+                    width: 100%;
+                }
+            }
+            button{
+                width: 80%;
+            }
+        }
+    }
+    @media (max-width: 425px) {
+        width: 100%;
+        padding: 20px 0;
+    }
+}
