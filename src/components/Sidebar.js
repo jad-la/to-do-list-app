@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiMenu } from "react-icons/bi";
 
-const Sidebar = ({isAdminLoggedIn, setIsAdminLoggedIn, setSelectedItem, userId, fetchUserDetails, utilisateur}) => {
-    console.log(userId);
+const Sidebar = ({isAdminLoggedIn, setIsAdminLoggedIn, userId, fetchUserDetails, utilisateur}) => {
+    
      // État local pour gérer l'affichage du menu burger
      const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
@@ -24,8 +24,8 @@ const Sidebar = ({isAdminLoggedIn, setIsAdminLoggedIn, setSelectedItem, userId, 
         window.location.href = '/'
     };
     useEffect(() => {
-        fetchUserDetails(); // Appelez la fonction ici
-    }, [userId]);
+        fetchUserDetails(); 
+    }, [fetchUserDetails]);
     
     return (
         <div className='container-sidebar'>

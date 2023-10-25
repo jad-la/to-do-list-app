@@ -18,7 +18,7 @@ const Liste = () => {
   const [model3Clicked, setModel3Clicked] = useState(false);
  
 
-  const predefinedColors = ['#F2C6DE', '#C6DEF1', '#C9E4DE', '#F9C6C9', '#FAEDCB', '#DBCDF0']; 
+  const predefinedColors = ['#DBCDF0', '#C6DEF1', '#CAFFBF', '#F4978E', '#FEBB9E', '#FCF6BD']; 
       const {
         register,
         handleSubmit,
@@ -54,26 +54,34 @@ const Liste = () => {
      
 
       const onSubmit = async (data) => {
-        const newListeData = {
-          title: data['titre-liste'],
-          tasks: data.tasks,
-          color: backgroundColor,
-          model: selectedModel,
-        };
-        console.log(newListeData)
-        const token = localStorage.getItem('token');
-        try {
-          const response = await axios.post('http://localhost:4000/api/liste', newListeData, {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`
-            },
-          });
-    
-          console.log(response.data);
-          window.location.href = '/Dashboard/listes';
-        } catch (error) {
-          console.error(error);
+        // Valider les champs requis (titre et tâches)
+      if (Object.keys(errors).length === 0) {
+        // Valider que la couleur et le modèle sont sélectionnés
+        if (!backgroundColor || !selectedModel) {
+          alert('La couleur et le modèle sont requis.');
+        } else {
+          const newListeData = {
+            title: data['titre-liste'],
+            tasks: data.tasks,
+            color: backgroundColor,
+            model: selectedModel,
+          };
+          // console.log(newListeData)
+          const token = localStorage.getItem('token');
+          try {
+            const response = await axios.post('https://todo-check-api.onrender.com/api/liste', newListeData, {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+              },
+            });
+      
+            console.log(response.data);
+            window.location.href = '/Dashboard/listes';
+          } catch (error) {
+            console.error(error);
+          }
+         }
         }
       };
     
@@ -126,16 +134,19 @@ const Liste = () => {
                         backgroundColor= {backgroundColor} 
                         onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model1')} 
                         isSelected={selectedModelStyle === 'model1'}
+                        modelClicked={model1Clicked}
                       />
                       <ListeModel2  
                         backgroundColor= {backgroundColor}
                         onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model2')} 
                         isSelected={selectedModelStyle === 'model2'}
+                        modelClicked={model2Clicked}
                       />
                       <ListeModel3  
                         backgroundColor= {backgroundColor} 
                         onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model3')} 
                         isSelected={selectedModelStyle === 'model3'}
+                        modelClicked={model3Clicked}
                       />
                     </div>
 

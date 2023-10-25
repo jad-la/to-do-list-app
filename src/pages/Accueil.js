@@ -22,7 +22,7 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
           return { left: '0' };
         }
       });
-    const [profilePicture, setProfilePicture] = useState(null);
+    // const [profilePicture] = useState(null);
     const [activeButton, setActiveButton] = useState('');
     
     const handleLoginButtonClick = () => {
@@ -62,7 +62,7 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
         setActiveButton('signup');
     };
     const handleSignupFormSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('email', data.email);
@@ -71,36 +71,37 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
         if (data.profilePicture[0]) {
         formData.append('profilePicture', data.profilePicture[0]);
         }
-        console.log(formData);
-        console.log(profilePicture);
-        axios.post('http://localhost:4000/api/user/signup', formData)
+        // console.log(formData);
+        // console.log(profilePicture);
+        axios.post('https://todo-check-api.onrender.com/api/user/signup', formData)
             .then((response) => {
             console.log('Utilisateur enregistré', response.data);
+            alert('Utilisateur enregistré, vous pouvez vous connecter maintenant!')
            
           })
           .catch((error) => {
             console.error('Erreur lors de l\'enregistrement', error);
-            // Gérez l'erreur d'enregistrement ici
+            
           });
       };
       const handleLoginFormSubmit = (data) => {
-        axios.post('http://localhost:4000/api/user/login', data)
+        axios.post("https://todo-check-api.onrender.com/api/user/login", data)
         .then((response) => {
-          console.log('Utilisateur connecté', response.data);
-           // Récupérez les données renvoyées par l'API
+        //   console.log('Utilisateur connecté', response.data);
+           // Récupérer les données renvoyées par l'API
            const { userId, token } = response.data;
 
            // Stockez les données dans le localStorage
            localStorage.setItem('userId', userId);
            localStorage.setItem('token', token);
 
-           // Mettez à jour l'état pour indiquer que l'administrateur est connecté
+           // Mettre à jour l'état pour indiquer que l'administrateur est connecté
            setIsAdminLoggedIn(true);
            window.location.href = '/Dashboard';
         })
         .catch((error) => {
           console.error('Erreur lors de la connexion', error);
-          // Gérez l'erreur d'enregistrement ici
+          
         });
       };
       
@@ -141,19 +142,19 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
                 <div className='partie-info'>
                         <div className='bloc-contenu'>
                             <h3>Organisation</h3>
-                            <img src='/images/accueil/3877111.jpg' alt='organisation' />
+                            <img className='img-cover' src='/images/accueil/organisation.png' alt='organisation' />
                         </div>
                         <div className='bloc-contenu'>
                             <h3>Ajout de liste</h3>
-                            <img src='/images/accueil/3920018.jpg' alt='organisation' />
+                            <img src='/images/accueil/ajout-liste.png' alt='ajout de liste' />
                         </div>
                         <div className='bloc-contenu'>
                             <h3>Vue d'ensemble</h3>
-                            <img src='/images/accueil/3542806.jpg' alt='organisation' />
+                            <img src='/images/accueil/vue-ensemble.png' alt="Vue d'ensemble" />
                         </div>
                         <div className='bloc-contenu'>
                             <h3>Compte</h3>
-                            <img src='/images/accueil/dashboard-analyser-donnees.jpg' alt='organisation' />
+                            <img src='/images/accueil/compte.png' alt='information compte' />
                         </div>
                 </div>
             </section>

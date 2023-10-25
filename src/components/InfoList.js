@@ -9,20 +9,18 @@ import {motion} from 'framer-motion';
 
 
 const InfoList = () => {
-  const { id } = useParams(); // Récupère l'ID de la liste depuis les paramètres d'URL
+  const token = localStorage.getItem('token');
+  const { id } = useParams(); 
   const [liste, setListe] = useState(null);
-  const [editing, setEditing] = useState(false); // État de l'édition
+  const [editing, setEditing] = useState(false); 
   const [editedTitle, setEditedTitle] = useState(liste ? liste.title : '');
   const [editedCompleted, setEditedCompleted] = useState(liste ? liste.completed : false);
   const [editedTasks, setEditedTasks] = useState(liste ? liste.tasks : []);
   const [newTask, setNewTask] = useState('');
-  const token = localStorage.getItem('token');
-  // const [editedColor, setEditedColor] = useState(liste ? liste.color : '');
-  const [selectedColor, setSelectedColor] = useState(null);
   const [selectedModel, setSelectedModel] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState('');
-  const predefinedColors = ['#F2C6DE', '#C6DEF1', '#C9E4DE', '#F9C6C9', '#FAEDCB', '#DBCDF0']; 
-  const [selectedModelStyle, setSelectedModelStyle] = useState({}); // activé ou désactivé bordure
+  const predefinedColors = ['#DBCDF0', '#C6DEF1', '#CAFFBF', '#F4978E', '#FEBB9E', '#FCF6BD']; 
+  const [selectedModelStyle, setSelectedModelStyle] = useState({});
   const [model1Clicked, setModel1Clicked] = useState(false);
   const [model2Clicked, setModel2Clicked] = useState(false);
   const [model3Clicked, setModel3Clicked] = useState(false);
@@ -52,7 +50,7 @@ const InfoList = () => {
     const fetchListeDetails = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:4000/api/liste/${id}`, {
+        const response = await axios.get(`https://todo-check-api.onrender.com/api/liste/${id}`, {
             headers: {
               Authorization: `Bearer ${token}`
               
@@ -62,6 +60,8 @@ const InfoList = () => {
         setEditedTitle(response.data.title);
         setEditedCompleted(response.data.completed);
         setEditedTasks(response.data.tasks);
+        setSelectedModel(response.data.model);
+        setBackgroundColor(response.data.color)
       } catch (error) {
         console.error('Erreur lors de la récupération des détails de la liste', error);
       }
@@ -80,7 +80,7 @@ const InfoList = () => {
   const handleUpdate = async () => {
     try {
         
-        await axios.put(`http://localhost:4000/api/liste/${id}`, {
+        await axios.put(`https://todo-check-api.onrender.com/api/liste/${id}`, {
             title: editedTitle,
             completed: editedCompleted,
             tasks: editedTasks,
@@ -107,11 +107,11 @@ const InfoList = () => {
   
 const handleTaskCompletionChange = async (taskId,  newCompletedValue) => {
     try {
-        console.log('taskId:', taskId);
-    console.log('newCompletedValue:', newCompletedValue);
+    //     console.log('taskId:', taskId);
+    // console.log('newCompletedValue:', newCompletedValue);
       const token = localStorage.getItem('token');
       const response= await axios.put(
-        `http://localhost:4000/api/liste/task/${taskId}`,
+        `https://todo-check-api.onrender.com/api/liste/task/${taskId}`,
         {  
             completed: newCompletedValue, 
         },
@@ -125,8 +125,9 @@ const handleTaskCompletionChange = async (taskId,  newCompletedValue) => {
       
       setEditedCompleted(newCompletedValue);
 
-      }console.log('taskId:', taskId);
-    console.log('newCompletedValue:', newCompletedValue);
+      }
+    //   console.log('taskId:', taskId);
+    // console.log('newCompletedValue:', newCompletedValue);
     } catch (error) {
       console.error('Erreur lors de la mise à jour de la tâche', error);
     }
@@ -140,7 +141,7 @@ const handleTaskCompletionChange = async (taskId,  newCompletedValue) => {
         return;
       }
 
-      const response = await axios.delete(`http://localhost:4000/api/liste/${id}`, {
+      const response = await axios.delete(`https://todo-check-api.onrender.com/api/liste/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -221,18 +222,21 @@ const handleTaskCompletionChange = async (taskId,  newCompletedValue) => {
                                     backgroundColor= {backgroundColor} 
                                     onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model1')} 
                                     isSelected={selectedModelStyle === 'model1'}
+                                    modelClicked={model1Clicked}
                                   />
                                   <ListeModel2 
                                     className='model model2' 
                                     backgroundColor= {backgroundColor}
                                     onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model2')} 
                                     isSelected={selectedModelStyle === 'model2'}
+                                    modelClicked={model2Clicked}
                                   />
                                   <ListeModel3 
                                     className='model model3' 
                                     backgroundColor= {backgroundColor} 
                                     onSelect={(color, modelStyles) => handleTemplateSelection(color, modelStyles, 'model3')} 
                                     isSelected={selectedModelStyle === 'model3'}
+                                    modelClicked={model3Clicked}
                                   />
                               </div>
                                   <div className='bloc-btn-modif'>

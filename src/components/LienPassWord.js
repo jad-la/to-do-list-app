@@ -14,7 +14,7 @@ const LienPassWord = () => {
         e.preventDefault();
 
         axios
-        .post('http://localhost:4000/api/user/reset-password-request', { email })
+        .post('https://todo-check-api.onrender.com/api/user/reset-password-request', { email })
         .then((response) => {
             setMessage('Un e-mail de réinitialisation de mot de passe a été envoyé.');
         })

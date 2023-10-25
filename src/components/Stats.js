@@ -20,7 +20,7 @@ const Stats = () => {
       legend: {
         labels: {
           font: {
-            size: 12, // Taille de police pour les labels
+            size: 12, 
           },
         },
       },
@@ -39,13 +39,13 @@ const Stats = () => {
     const fetchTaskListStats = async() => {
         try{
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:4000/api/liste/stats', {
+        const response = await axios.get('https://todo-check-api.onrender.com/api/liste/stats', {
             headers: {
               Authorization: `Bearer ${token}`
               // Ajouter votre token d'authentification ici si nécessaire
             },
           });
-        console.log(response);
+        // console.log(response);
           const { listStats, percentageCompletedGlobal} = response.data;
 
           // Créez les données pour le diagramme en pourcentage (Doughnut)
@@ -54,7 +54,7 @@ const Stats = () => {
             datasets: [
               {
                 data: [percentageCompletedGlobal, 100 - percentageCompletedGlobal],
-                backgroundColor: ['#36A2EB', '#FFCE56'],
+                backgroundColor: ['#FEBB9E', '#FFCE56'],
               },
             ],
           };
@@ -65,7 +65,7 @@ const Stats = () => {
           datasets: [
             {
               data: [listStat.percentageCompleted, 100 - listStat.percentageCompleted],
-              backgroundColor: ['#36A2EB', '#FFCE56'],
+              backgroundColor: ['#FEBB9E', '#FFCE56'],
             },
           ],
           title: listStat.listTitle,
@@ -74,7 +74,7 @@ const Stats = () => {
 
           // Mettez à jour le state avec les données des diagrammes
           setChartData({ doughnutDataGlobal, doughnutDataPerList });
-          console.log({ doughnutDataGlobal, doughnutDataPerList });
+          // console.log({ doughnutDataGlobal, doughnutDataPerList });
          
         } catch(error){
           console.error('Erreur lors de la récupération des statistiques :', error);

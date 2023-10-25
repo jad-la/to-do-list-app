@@ -17,13 +17,13 @@ const MesListes = () => {
     const fetchLists = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:4000/api/liste', {
+        const response = await axios.get('https://todo-check-api.onrender.com/api/liste', {
           headers: {
             Authorization: `Bearer ${token}`
             // Ajouter votre token d'authentification ici si nécessaire
           },
         });
-        console.log('Données récupérées depuis l\'API :', response.data);
+        // console.log('Données récupérées depuis l\'API :', response.data);
         setLists(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des listes', error);
@@ -47,7 +47,7 @@ const MesListes = () => {
           ) : (
               lists.map((donnee, index) => (
                   <div className='box-info' key={index} style={{ backgroundColor: donnee.color }}>
-                          {/* <CardList donnee={donnee} key={donnee.id} /> */}
+                          
                           <h2 style={{ fontFamily: donnee.model.h2 }}>{donnee.title}</h2>
                       <ul>{donnee.tasks.map((tache, index) =>(
                         

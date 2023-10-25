@@ -2,14 +2,10 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 
+const Compte = ({userId, fetchUserDetails, utilisateur}) => {
 
-
-const Compte = () => {
-  const { id } = useParams();
-  const [utilisateur, setUtilisateur] = useState([]);
   const [modeEdition, setModeEdition] = useState(false);
   const [nouvellesDonnees, setNouvellesDonnees] = useState({
     email: '',
@@ -22,28 +18,10 @@ const Compte = () => {
     profilePicture: false,
   });
 
-  const fetchUserDetails = async () => {
-    try {
-      const token = localStorage.getItem('token');
-    
-      const response = await axios.get(`http://localhost:4000/api/user/compte/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log('Données récupérées depuis l\'API :', response.data);
-      setUtilisateur(response.data);
-    } catch (error) {
-      console.error('Erreur lors de la récupération des données utilisateur', error);
-    }
-  };
+
   useEffect(() => {
-
-
-
-    fetchUserDetails(); // Appelez la fonction ici
-
-  }, [id]);
+    fetchUserDetails(); 
+  }, [fetchUserDetails]);
 
   
   const handleInputChange = (e) => {
@@ -109,7 +87,7 @@ const Compte = () => {
     }
 
     try {
-      await axios.put(`http://localhost:4000/api/user/compte/${id}`, formData, {
+      await axios.put(`https://todo-check-api.onrender.com/api/user/compte/${userId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

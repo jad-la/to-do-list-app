@@ -10,14 +10,15 @@ const Formulaire = ({ showAdditionalField, onSubmitApi, reinitPassWord }) => {
       } = useForm();
     
       const onSubmit = (data) => {
-        console.log(data);
         onSubmitApi(data);
       };
+      //variable pour les message d'erreur lorsque les champs sont mal rensignés
+   
       
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
           {showAdditionalField && (<>
-            <input type="file" enctype="multipart/form-data" name="profilePicture" accept="image/*" {...register('profilePicture')} />
+            <input type="file" encType="multipart/form-data" name="profilePicture" accept="image/*" {...register('profilePicture')} />
             <input className='input-name input-focus' name='name' type='text'{...register('name', { required: true }) } placeholder='Nom' />
             {errors.name && <p>Last name is required.</p>}
           </>)}

@@ -17,10 +17,6 @@ const Dashboard = ({isAdminLoggedIn, setIsAdminLoggedIn, userId, utilisateur, fe
                         fetchUserDetails={fetchUserDetails}
                     />
                 </div>
-                {/* <div className='affichage-projets'>
-                  
-                    {renderContent()}
-                </div> */}
                 <Outlet />
             </div>
                    

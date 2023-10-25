@@ -4,23 +4,23 @@ import { useParams } from 'react-router-dom';
 import Header from './Header';
 
 const ResetPassword = () => {
-    const { token } = useParams(); // Extrayez le jeton de l'URL
+  const { token } = useParams(); // Extrayez le jeton de l'URL
   const [newPassword, setNewPassword] = useState('');
-  console.log('le log de token', token );
+  // console.log('le log de token', token );
 
   const handleResetPassword = () => {
     // Envoyez une requête au backend pour mettre à jour le mot de passe
-    axios.post('http://localhost:4000/api/user/reset-password', {
+    axios.post('https://todo-check-api.onrender.com/api/user/reset-password', {
         resetToken: token,
         newPassword: newPassword,
     })
     .then((response) => {
-        console.log(newPassword);
+      //   console.log(newPassword);
       console.log('Mot de passe réinitialisé avec succès', response.data);
       window.location.href = '/';
     })
     .catch((error) => {
-        console.log(newPassword);
+        // console.log(newPassword);
       console.error('Erreur lors de la réinitialisation du mot de passe', error);
       // Gérez l'erreur de réinitialisation du mot de passe ici
     });

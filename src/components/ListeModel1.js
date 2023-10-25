@@ -32,7 +32,7 @@ const ListeModel1 = ({ onSelect, backgroundColor, isSelected }) => {
                     <span style={{ fontFamily: 'Caveat' }}>Tâche 1</span> 
                 </div>    
                 <img  src={ SquareCheck} alt="Icône étoile" width={10} height={10}  className='testIconeCheck'/>        
-                {/* <FaRegSquareCheck className='testIconeCheck'/>  */}
+                
             </li>
             <li>
                 <div>
@@ -40,7 +40,7 @@ const ListeModel1 = ({ onSelect, backgroundColor, isSelected }) => {
                     <span style={{ fontFamily: 'Caveat' }}>Tâche 2</span> 
                 </div>   
                 <img  src={ SquareCheck } alt="Icône étoile" width={10} height={10} className='testIconeCheck' />           
-                {/* <FaRegSquareCheck className='testIconeCheck'/>  */}
+                
             </li>
             <li>
                 <div>
@@ -48,7 +48,7 @@ const ListeModel1 = ({ onSelect, backgroundColor, isSelected }) => {
                     <span style={{ fontFamily: 'Caveat' }}>Tâche 3</span> 
                 </div>  
                 <img  src={ Square } alt="Icône étoile" width={10} height={10} className='testIconeCheck' />            
-                {/* <FaRegSquareCheck className='testIconeCheck'/>  */}
+                
             </li>
           </ul>
     </motion.div>
