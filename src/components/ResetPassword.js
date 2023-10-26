@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from './Header';
 
 const ResetPassword = () => {
   const { token } = useParams(); // Extrayez le jeton de l'URL
   const [newPassword, setNewPassword] = useState('');
+  const navigate = useNavigate();
+
   // console.log('le log de token', token );
 
   const handleResetPassword = () => {
@@ -17,7 +19,9 @@ const ResetPassword = () => {
     .then((response) => {
       //   console.log(newPassword);
       console.log('Mot de passe réinitialisé avec succès', response.data);
-      window.location.href = '/';
+      alert('Mot de passe réinitialisé avec succès. Vous pouvez maintenant vous connecter.');
+      // objet history pour effectuer la redirection
+      navigate('/');
     })
     .catch((error) => {
         // console.log(newPassword);
@@ -40,7 +44,8 @@ const ResetPassword = () => {
             onChange={(e) => setNewPassword(e.target.value)}
           />
         </div>
-      <button onClick={handleResetPassword}>Réinitialiser le mot de passe</button>
+        <button onClick={handleResetPassword}>Réinitialiser le mot de passe</button>
+        
       </form>
     </div>
   );

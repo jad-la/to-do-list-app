@@ -107,6 +107,7 @@ const Compte = ({userId, fetchUserDetails, utilisateur}) => {
       {modeEdition ? (
         <form className='form-user-update' onSubmit={handleModificationSubmit}>
           <h1>Modifier information</h1>
+          <p>Veuillez noter que pour enregistrer les modifications, au moins un champ doit être rempli. Assurez-vous de saisir au moins une information mise à jour (par exemple: adresse e-mail).</p>
           <div className='infoUser'>
               <input
                 placeholder='Nouvelle adresse mail'
