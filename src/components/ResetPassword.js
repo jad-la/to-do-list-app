@@ -10,7 +10,8 @@ const ResetPassword = () => {
 
   // console.log('le log de token', token );
 
-  const handleResetPassword = () => {
+  const handleResetPassword = (e) => {
+    e.preventDefault();
     // Envoyez une requête au backend pour mettre à jour le mot de passe
     axios.post('https://todo-check-api.onrender.com/api/user/reset-password', {
         resetToken: token,
