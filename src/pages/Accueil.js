@@ -73,16 +73,32 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
         }
         // console.log(formData);
         // console.log(profilePicture);
-        axios.post('https://todo-check-api.onrender.com/api/user/signup', formData)
-            .then((response) => {
-            console.log('Utilisateur enregistré', response.data);
-            alert('Utilisateur enregistré, vous pouvez vous connecter maintenant!')
+        // Validation du mot de passe avec l'expression régulière
+        const passwordRegExp = new RegExp('^(?=.*[a-zA-Z0-9])(?=.*[^a-zA-Z0-9]).{8,30}$');
+        if (!passwordRegExp.test(data.password)) {
+            // Le mot de passe ne respecte pas les conditions, affichez une alerte
+            alert('Le mot de passe ne respecte pas les conditions requises. Il doit contenir au moins 8 caractères avec au moins un caractère alphanumérique et peut contenir des caractères spéciaux.');
+        } else {
+            // Le mot de passe est valide, envoyez la requête
+            axios.post('https://todo-check-api.onrender.com/api/user/signup', formData)
+                .then((response) => {
+                    console.log('Utilisateur enregistré', response.data);
+                    alert('Utilisateur enregistré, vous pouvez vous connecter maintenant!');
+                })
+                .catch((error) => {
+                    console.error('Erreur lors de l\'enregistrement', error);
+                });
+        }
+        // axios.post('https://todo-check-api.onrender.com/api/user/signup', formData)
+        //     .then((response) => {
+        //     console.log('Utilisateur enregistré', response.data);
+        //     alert('Utilisateur enregistré, vous pouvez vous connecter maintenant!')
            
-          })
-          .catch((error) => {
-            console.error('Erreur lors de l\'enregistrement', error);
+        //   })
+        //   .catch((error) => {
+        //     console.error('Erreur lors de l\'enregistrement', error);
             
-          });
+        //   });
       };
       const handleLoginFormSubmit = (data) => {
         axios.post("https://todo-check-api.onrender.com/api/user/login", data)

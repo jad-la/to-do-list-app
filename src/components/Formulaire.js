@@ -18,7 +18,7 @@ const Formulaire = ({ showAdditionalField, onSubmitApi, reinitPassWord }) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
           {showAdditionalField && (<>
-            <input type="file" encType="multipart/form-data" name="profilePicture" accept="image/*" {...register('profilePicture')} />
+            <input className='input-file' type="file" encType="multipart/form-data" name="profilePicture" accept="image/*" {...register('profilePicture')} />
             <input className='input-name input-focus' name='name' type='text'{...register('name', { required: true }) } placeholder='Nom' />
             {errors.name && <p>Last name is required.</p>}
           </>)}
