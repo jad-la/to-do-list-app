@@ -158,19 +158,28 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
                 <div className='partie-info'>
                         <div className='bloc-contenu'>
                             <h3>Organisation</h3>
-                            <img className='img-cover' src='/images/accueil/organisation.png' alt='organisation' />
+                            <a href="https://fr.freepik.com/vecteurs-libre/fille-verifiant-fond-liste-controle-geant_4059821.htm#query=to%20do%20liste%20app&position=44&from_view=search&track=ais">
+                                    <img className='img-cover' src='/images/accueil/organisation.jpg' alt='organisation'  />
+                            </a>
                         </div>
+
                         <div className='bloc-contenu'>
                             <h3>Ajout de liste</h3>
-                            <img src='/images/accueil/ajout-liste.png' alt='ajout de liste' />
+                            <a href="https://fr.freepik.com/vecteurs-libre/illustration-essai-dessine-main_40350252.htm#query=form%20to%20do%20liste&position=49&from_view=search&track=ais">
+                                <img src='/images/accueil/ajout-liste.jpg' alt='ajout de liste' />
+                            </a>
                         </div>
                         <div className='bloc-contenu'>
                             <h3>Vue d'ensemble</h3>
-                            <img src='/images/accueil/vue-ensemble.png' alt="Vue d'ensemble" />
+                            <a href="https://fr.freepik.com/vecteurs-libre/analyse-du-tableau-bord-evaluation-performances-informatiques-graphique-ecran-analyse-statistiques-evaluation-infographique-rapport-activite-ecran-illustration-metaphore-concept-isole_10783211.htm#page=4&query=Dashboard&position=1&from_view=search&track=sph">    
+                                <img src='/images/accueil/vue-ensemble.jpg' alt="Vue d'ensemble" />
+                            </a> 
                         </div>
                         <div className='bloc-contenu'>
                             <h3>Compte</h3>
-                            <img src='/images/accueil/compte.png' alt='information compte' />
+                            <a href="https://www.freepik.com/free-vector/competent-resume-writing-professional-cv-constructor-online-job-application-profile-creation-african-american-woman-filling-up-digital-form-concept-illustration_11668469.htm#query=compte%20user&position=20&from_view=search&track=ais">
+                                <img src='/images/accueil/compte.jpg' alt='information compte' />
+                            </a> 
                         </div>
                 </div>
             </section>
