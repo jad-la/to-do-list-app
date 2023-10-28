@@ -74,10 +74,10 @@ const Accueil = ({ setIsAdminLoggedIn }) => {
         // console.log(formData);
         // console.log(profilePicture);
         // Validation du mot de passe avec l'expression régulière
-        const passwordRegExp = new RegExp('^(?=.*[a-zA-Z0-9])(?=.*[^a-zA-Z0-9]).{8,30}$');
+        const passwordRegExp = new RegExp('^.{6,}');
         if (!passwordRegExp.test(data.password)) {
             // Le mot de passe ne respecte pas les conditions, affichez une alerte
-            alert('Le mot de passe ne respecte pas les conditions requises. Il doit contenir au moins 8 caractères avec au moins un caractère alphanumérique et peut contenir des caractères spéciaux.');
+            alert('Le mot de passe ne respecte pas les conditions requises. Il doit contenir au moins 6 caractères.');
         } else {
             // Le mot de passe est valide, envoyez la requête
             axios.post('https://todo-check-api.onrender.com/api/user/signup', formData)
